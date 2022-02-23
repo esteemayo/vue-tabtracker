@@ -36,13 +36,9 @@ const songs = {
       commit('setSong', data.song);
     },
     async getSong({ commit }, payload) {
-      try {
-        const { data } = await songService.getSongById(payload);
+      const { data } = await songService.getSongById(payload);
 
-        commit('getSong', data.song);
-      } catch (err) {
-        console.log(err);
-      }
+      commit('getSong', data.song);
     },
     async editSong(_, payload) {
       await songService.updateSong(payload, payload.id);
