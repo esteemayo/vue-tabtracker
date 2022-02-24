@@ -42,10 +42,14 @@ export default {
   computed: mapGetters(['user']),
   async mounted() {
     if (this.user) {
-      const { data } = await getBookmarks();
+      try {
+        const { data } = await getBookmarks();
 
-      if (data.bookmarks.length) {
-        this.bookmarks = data.bookmarks[0];
+        if (data.bookmarks.length) {
+          this.bookmarks = data.bookmarks[0];
+        }
+      } catch (err) {
+        console.log(err);
       }
     }
   },

@@ -21,7 +21,7 @@
             <button
               class="btn"
               v-if="user && bookmark"
-              @click="UnsetAsbookmark"
+              @click="unsetAsbookmark"
             >
               Unset As Bookmark
             </button>
@@ -81,7 +81,7 @@ export default {
         console.log(err);
       }
     },
-    async UnsetAsbookmark() {
+    async unsetAsbookmark() {
       try {
         await bookmarkService.deleteBookmark(this.bookmarkId);
         this.bookmark = null;
